@@ -11,8 +11,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-Frontend-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)](https://streamlit.io)
 [![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/)
-[![Groq](https://img.shields.io/badge/Groq-Llama_3.1-F55036?style=flat-square)](https://groq.com)
-
+[![Google Gemini](https://img.shields.io/badge/Google-Gemini%202.5%20Flash-4285F4?style=flat-square&logo=google)](https://ai.google.dev/)
 </div>
 
 ---
@@ -35,7 +34,7 @@ This project is built for portfolio demos, deployment practice, and AI workflow 
 - FastAPI REST backend deployed on Vercel
 - Dockerized Streamlit app for reproducible local/container runs
 - SQLAlchemy persistence with local SQLite or hosted PostgreSQL
-- Groq-powered discharge instruction generation
+- AI-powered discharge instruction generation
 - Patient-specific AI chat with recent conversation memory
 - Rule-based risk labels: `LOW`, `MEDIUM`, `HIGH`
 - Backend health endpoint for deployment debugging
@@ -52,7 +51,7 @@ Streamlit Cloud
        v
 Vercel FastAPI
   index.py -> backend.api:app
-  GROQ_API_KEY secret
+  GOOGLE_API_KEY secret
   DATABASE_URL secret
        |
        v
@@ -76,7 +75,7 @@ Hosted PostgreSQL
 |   |-- models/patient.py     # Patient table model
 |   `-- routes/ai_routes.py   # API endpoints
 |-- core/
-|   |-- ai_engine.py          # Groq client wrapper
+|   |-- ai_engine.py          # Ai client wrapper
 |   |-- memory.py             # Chat memory formatting
 |   |-- prompts.py            # AI prompt templates
 |   `-- risk.py               # Rule-based risk detection
@@ -145,7 +144,7 @@ pip install -r requirements.txt
 Create `.env`:
 
 ```env
-GROQ_API_KEY=your_groq_api_key
+GOOGLE_API_KEY=your_api_key
 DATABASE_URL=sqlite:///./medai.db
 API_URL=http://127.0.0.1:8000
 ```
@@ -193,7 +192,7 @@ For production, pass deployed service URLs through environment variables instead
 Add these environment variables in Vercel:
 
 ```env
-GROQ_API_KEY=your_groq_api_key
+GOOGLE_API_KEY=your_api_key
 DATABASE_URL=your_hosted_postgres_connection_string
 ALLOWED_ORIGINS=*
 ```
