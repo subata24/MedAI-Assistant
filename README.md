@@ -66,7 +66,7 @@ Rather than replacing healthcare professionals, MedAI Assistant focuses on impro
 - Backend health endpoint for deployment debugging
 - Safer medical prompt framing and basic prompt-injection resistance
 
-  # AI Feature
+ # AI Feature
 
 MedAI Assistant uses **Google Gemini 2.5 Flash** to perform intelligent analysis of hospital discharge summaries.
 
