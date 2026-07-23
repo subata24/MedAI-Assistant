@@ -2,7 +2,7 @@
 
 # MedAI Assistant
 
-**AI-powered discharge follow-up dashboard that turns patient summaries into structured care guidance, risk signals, and patient-specific Q&A.**
+**An AI-powered post-discharge care assistant that transforms complex hospital discharge summaries into simple, structured follow-up guidance, risk insights, and patient-specific question answering.**
 
 [![Open App](https://img.shields.io/badge/Open_Live_App-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://medai-assistant-w6hqdj4lg7gawdpgjrvde2.streamlit.app/)
 [![API](https://img.shields.io/badge/API-Vercel-black?style=for-the-badge&logo=vercel&logoColor=white)](https://med-ai-assistant-pi.vercel.app/health)
@@ -12,21 +12,47 @@
 [![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/)
 [![Google Gemini](https://img.shields.io/badge/Google-Gemini%202.5%20Flash-4285F4?style=flat-square&logo=google)](https://ai.google.dev/)
-</div>
 
+</div>
 ---
 
-## Live Demo
+# Live Demo
 
-- App: https://medai-assistant-w6hqdj4lg7gawdpgjrvde2.streamlit.app/
-- API health check: https://med-ai-assistant-pi.vercel.app/health
-- API docs: https://med-ai-assistant-pi.vercel.app/docs
+**Live Application**
 
-## Overview
+https://medai-assistant-w6hqdj4lg7gawdpgjrvde2.streamlit.app/
 
-MedAI Assistant is a full-stack healthcare AI prototype with a Streamlit clinical dashboard and a FastAPI backend. Users can add discharge summaries, store patient records, calculate a simple risk tier, generate structured follow-up instructions with Groq, and ask patient-specific questions through an AI assistant with short-term conversation memory.
+**Backend API**
 
-This project is built for portfolio demos, deployment practice, and AI workflow experimentation. It is not a certified medical product.
+https://med-ai-assistant-pi.vercel.app/health
+
+**API Documentation**
+
+https://med-ai-assistant-pi.vercel.app/docs
+
+# Problem Statement
+
+After patients are discharged from a hospital, they often receive lengthy medical reports filled with complex terminology, medication instructions, follow-up schedules, and warning signs. Many patients and caregivers struggle to understand these reports, which can lead to medication mistakes, missed follow-up appointments, unnecessary hospital visits, or delayed medical attention.
+
+MedAI Assistant addresses this problem by using Generative AI to convert complex discharge summaries into clear, structured, patient-friendly guidance. It also allows patients to ask follow-up questions in natural language while providing simple risk insights based on the discharge information.
+
+The application is intended for educational purposes and demonstrates how AI can improve communication between healthcare providers and patients.
+
+# Overview
+
+MedAI Assistant is a full-stack AI healthcare application built with Streamlit, FastAPI, SQLAlchemy , Docker, and Google Gemini.
+
+The application allows healthcare professionals or students to upload patient discharge summaries, securely store patient information, generate AI-powered follow-up care instructions, calculate simple risk levels, and interact with an intelligent patient-specific assistant.
+
+Rather than replacing healthcare professionals, MedAI Assistant focuses on improving patient understanding by transforming technical medical language into structured and easy-to-understand guidance.
+
+# Target Users
+
+- Patients after hospital discharge
+- Family caregivers
+- Medical students
+- Healthcare professionals
+- AI developers exploring healthcare applications
 
 ## Features
 
@@ -39,6 +65,74 @@ This project is built for portfolio demos, deployment practice, and AI workflow 
 - Rule-based risk labels: `LOW`, `MEDIUM`, `HIGH`
 - Backend health endpoint for deployment debugging
 - Safer medical prompt framing and basic prompt-injection resistance
+
+  # AI Feature
+
+MedAI Assistant uses **Google Gemini 2.5 Flash** to perform intelligent analysis of hospital discharge summaries.
+
+The AI is responsible for:
+
+- Generating structured follow-up instructions
+- Explaining medical information in simple language
+- Answering patient-specific follow-up questions
+- Using recent conversation memory for contextual responses
+- Providing safe healthcare guidance while avoiding unsupported medical claims
+
+The application combines AI-generated responses with rule-based risk detection to provide more structured follow-up recommendations.
+
+# AI System Prompts
+
+The AI behaviour is guided using two prompt templates.
+
+## Discharge Analysis Prompt
+
+The model is instructed to:
+
+- Convert hospital discharge summaries into structured follow-up instructions.
+- Use only the information contained in the discharge summary.
+- Never invent medications, diagnoses, or medical advice.
+- Produce concise bullet-point responses.
+- Return "Not specified" whenever information is unavailable.
+
+Output format:
+
+- Condition
+- Medications
+- Diet
+- Activity
+- Follow-up
+- Monitoring
+- Warning Signs
+
+---
+
+## Patient Chat System Prompt
+
+The conversational assistant is instructed to:
+
+- Answer questions using the patient's discharge summary.
+- Keep responses short, clear, and easy to understand.
+- Never invent medical information.
+- Never provide medical diagnoses.
+- Inform the user when requested information is unavailable.
+- Recommend consulting healthcare professionals whenever appropriate.
+- Advise immediate medical attention if severe warning symptoms are mentioned.
+
+# Application Workflow
+
+1. User enters patient information and discharge summary.
+
+2. Patient data is stored in the database.
+
+3. A rule-based algorithm calculates the patient's risk level.
+
+4. Google Gemini analyzes the discharge summary.
+
+5. AI generates structured follow-up instructions.
+
+6. Users can ask additional patient-specific questions.
+
+7. The AI answers using both the discharge summary and recent conversation history.
 
 ## Architecture
 
@@ -130,11 +224,46 @@ Answers a patient-specific question using the stored summary and recent chat mem
   "memory": ""
 }
 ```
+# Technologies Used
+
+| Category | Technology |
+|------------|------------|
+| Programming Language | Python 3.11 |
+| Frontend | Streamlit |
+| Backend | FastAPI |
+| AI Model | Google Gemini 2.5 Flash |
+| Database | SQLAlchemy + PostgreSQL / SQLite |
+| Deployment | Streamlit Cloud + Vercel |
+| Containerization | Docker |
+
+# Screenshots
+
+## Dashboard
+
+<img src="screenshots/dashboard.png" width="100%">
+
+---
+
+## Patient Record
+
+<img src="screenshots/patient-record.png" width="100%">
+
+---
+
+## AI Analysis
+
+<img src="screenshots/analysis.png" width="100%">
+
+---
+
+## Patient Chat
+
+<img src="screenshots/chat.png" width="100%">
 
 ## Local Setup
 
 ```bash
-git clone https://github.com/subata24/patient-followup-assistant.git
+git clone https://github.com/subata24/MedAI-Assistant.git
 cd patient-followup-assistant
 python -m venv venv
 venv\Scripts\activate
@@ -217,6 +346,8 @@ The value must be the API base URL only. Do not append `/health`, `/patients`, o
 - Use PostgreSQL for deployed storage because Vercel does not provide durable SQLite storage.
 - The risk classifier is a simple rule-based demo, not clinical triage.
 
-## Disclaimer
+# Disclaimer
 
-MedAI Assistant is an educational proof of concept. It is not a medical device, does not diagnose, and must not replace emergency care or professional medical advice.
+MedAI Assistant is an educational AI application developed to demonstrate the use of Generative AI in post-discharge patient care.
+
+The application does not diagnose diseases, replace licensed healthcare professionals, or provide emergency medical advice. All AI-generated responses are intended for informational purposes only, and patients should always consult qualified healthcare providers for medical decisions.
