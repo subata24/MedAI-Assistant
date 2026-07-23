@@ -47,6 +47,13 @@ html, body, [class*="css"] {
     font-family: 'Inter', sans-serif;
 }
 
+body,
+.stApp {
+    background:
+        radial-gradient(circle at top left, rgba(37,99,235,0.10), transparent 30%),
+        linear-gradient(180deg, #F8FAFC 0%, #EEF2F7 100%);
+}
+
 #MainMenu, footer {
     visibility: hidden;
 }
@@ -58,7 +65,9 @@ html, body, [class*="css"] {
 }
 
 section[data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #071019 0%, #0F172A 100%);
+    background:
+        linear-gradient(180deg, rgba(14,165,233,0.08), transparent 22%),
+        linear-gradient(180deg, #06111F 0%, #101827 100%);
     border-right: 1px solid #1E293B;
     min-width: 320px !important;
     max-width: 320px !important;
@@ -73,23 +82,82 @@ section[data-testid="stSidebar"] > div {
 }
 
 .hero {
-    background: linear-gradient(135deg,#0F172A,#111827);
-    padding: 32px;
-    border-radius: 18px;
+    background:
+        linear-gradient(135deg, rgba(15,23,42,0.96), rgba(12,74,110,0.92)),
+        linear-gradient(90deg, #0F172A, #134E4A);
+    padding: 30px 32px;
+    border-radius: 16px;
     margin-bottom: 24px;
-    border: 1px solid #1E293B;
+    border: 1px solid rgba(226,232,240,0.18);
+    box-shadow: 0 24px 60px rgba(15,23,42,0.18);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: auto -8% -45% 58%;
+    height: 220px;
+    background: radial-gradient(circle, rgba(45,212,191,0.28), transparent 62%);
+    pointer-events: none;
+}
+
+.hero-row {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.hero-kicker {
+    color: #67E8F9;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
 }
 
 .hero-title {
-    font-size: 34px;
+    font-size: 36px;
     font-weight: 700;
     color: white;
+    line-height: 1.15;
 }
 
 .hero-sub {
     color: #CBD5E1;
     margin-top: 8px;
     font-size: 15px;
+}
+
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 12px;
+    min-width: 280px;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 12px;
+    padding: 14px;
+}
+
+.stat-value {
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.stat-label {
+    color: #BAE6FD;
+    font-size: 12px;
+    margin-top: 2px;
 }
 
 .live-badge {
@@ -115,6 +183,61 @@ section[data-testid="stSidebar"] > div {
     color: #0F172A;
 }
 
+.section-panel {
+    background: rgba(255,255,255,0.88);
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 16px 36px rgba(15,23,42,0.08);
+}
+
+.patient-header {
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+    box-shadow: 0 12px 28px rgba(15,23,42,0.06);
+}
+
+.patient-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.patient-meta {
+    color: #64748B;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.risk-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 96px;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.risk-low {
+    color: #047857;
+    background: #D1FAE5;
+}
+
+.risk-medium {
+    color: #B45309;
+    background: #FEF3C7;
+}
+
+.risk-high {
+    color: #B91C1C;
+    background: #FEE2E2;
+}
+
 .stButton > button {
     width: 100%;
     border-radius: 12px;
@@ -123,11 +246,18 @@ section[data-testid="stSidebar"] > div {
     color: white;
     font-weight: 600;
     padding: 12px 18px;
+    box-shadow: 0 12px 22px rgba(37,99,235,0.22);
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.stButton > button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 28px rgba(37,99,235,0.28);
 }
 
 .ai-box {
-    background: #F8FAFC;
-    border: 1px solid #E2E8F0;
+    background: linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 100%);
+    border: 1px solid #BFDBFE;
     border-radius: 14px;
     padding: 18px;
     line-height: 1.8;
@@ -135,11 +265,12 @@ section[data-testid="stSidebar"] > div {
 }
 
 .empty-box {
-    background: white;
-    border: 1px dashed #CBD5E1;
-    border-radius: 18px;
-    padding: 80px 20px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(248,250,252,0.94));
+    border: 1px dashed #94A3B8;
+    border-radius: 16px;
+    padding: 90px 20px;
     text-align: center;
+    box-shadow: 0 18px 42px rgba(15,23,42,0.08);
 }
 
 .empty-title {
@@ -165,40 +296,17 @@ section[data-testid="stSidebar"] > div {
 .stTextArea textarea {
     background-color: #0F172A !important;
     color: #FFFFFF !important;
-<<<<<<< HEAD
-    border: 1px solid #334155 !important;
-    border-radius: 10px !important;
-    font-size: 15px !important;
-}
-
-/* BIGGER & CLEARER TEXTAREA */
-.stTextArea textarea {
-    min-height: 220px !important;
-    line-height: 1.7 !important;
-    padding: 14px !important;
-    font-size: 15px !important;
-}
-
-/* Placeholder */
-.stTextInput input::placeholder,
-.stTextArea textarea::placeholder {
-    color: #94A3B8 !important;
-    opacity: 1 !important;
-}
-
-/* Focus effect */
-.stTextInput input:focus,
-.stNumberInput input:focus,
-.stTextArea textarea:focus {
-    border: 1px solid #3B82F6 !important;
-    box-shadow: 0 0 0 1px #3B82F6 !important;
-=======
     -webkit-text-fill-color: #FFFFFF !important;
     border: 1px solid #334155 !important;
     border-radius: 10px !important;
     font-size: 15px !important;
     opacity: 1 !important;
->>>>>>> b19ff85 (Fix textarea readability)
+}
+
+.stNumberInput button {
+    background: #111827 !important;
+    border-color: #334155 !important;
+    color: #E2E8F0 !important;
 }
 
 /* BIGGER & CLEARER TEXTAREA */
@@ -251,6 +359,18 @@ div[data-baseweb="select"] > div {
     border-radius: 14px;
     border: 1px solid #1E293B;
 }
+
+@media (max-width: 900px) {
+    .hero-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .hero-stats {
+        width: 100%;
+        min-width: 0;
+    }
+}
 </style>
 """,
     unsafe_allow_html=True,
@@ -295,16 +415,23 @@ with st.sidebar:
 
     st.subheader("Add Patient")
 
-    with st.form("add_patient_form"):
+    with st.form("add_patient_form", clear_on_submit=True):
         patient_name = st.text_input("Patient Name")
-        patient_age = st.number_input("Age", min_value=0, max_value=120, value=30)
+        patient_age = st.number_input(
+            "Age",
+            min_value=0,
+            max_value=120,
+            value=None,
+            placeholder="Enter age",
+        )
         patient_condition = st.text_input("Condition")
         patient_report = st.text_area("Discharge Summary", height=150)
         submitted = st.form_submit_button("Add Patient")
 
     if submitted and patient_name:
+        age_text = patient_age if patient_age is not None else "Not provided"
         report_text = f"""
-Age: {patient_age}
+Age: {age_text}
 
 Condition:
 {patient_condition}
@@ -368,30 +495,64 @@ Medication:
         patient_ids = [p["id"] for p in patients]
         patient_labels = {p["id"]: f"{p['name']} (ID: {p['id']})" for p in patients}
 
+        patient_options = [None] + patient_ids
         selected_index = 0
         if st.session_state.current_patient_id in patient_ids:
-            selected_index = patient_ids.index(st.session_state.current_patient_id)
+            selected_index = patient_options.index(st.session_state.current_patient_id)
 
         selected_patient_id = st.selectbox(
             "Select Patient",
-            patient_ids,
+            patient_options,
             index=selected_index,
-            format_func=lambda patient_id: patient_labels[patient_id],
+            format_func=lambda patient_id: (
+                "Select a patient" if patient_id is None else patient_labels[patient_id]
+            ),
         )
 
-        st.session_state.current_patient_id = selected_patient_id
-        st.session_state.current_patient = patient_labels[selected_patient_id]
+        if selected_patient_id is None:
+            st.session_state.current_patient_id = None
+            st.session_state.current_patient = None
+        else:
+            st.session_state.current_patient_id = selected_patient_id
+            st.session_state.current_patient = patient_labels[selected_patient_id]
 
 
 badge_class = "live-badge" if api_online else "live-badge offline"
 badge_text = "System Online" if api_online else "Backend Offline"
+high_risk_count = sum(
+    1 for patient in patients if patient.get("risk_level", "").upper() == "HIGH"
+)
+status_label = "Online" if api_online else "Offline"
 
 st.markdown(
     f"""
 <div class="hero">
-<div class="hero-title">Clinical Intelligence Dashboard</div>
-<div class="hero-sub">AI-powered discharge intelligence · {len(patients)} patient records available</div>
-<div class="{badge_class}">● {badge_text}</div>
+    <div class="hero-row">
+        <div>
+            <div class="hero-kicker">Clinical command center</div>
+            <div class="hero-title">MedAI Assistant</div>
+            <div class="hero-sub">AI-powered discharge intelligence for faster patient review</div>
+            <div class="{badge_class}">&bull; {badge_text}</div>
+        </div>
+        <div class="hero-stats">
+            <div class="stat-card">
+                <div class="stat-value">{len(patients)}</div>
+                <div class="stat-label">Patient records</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{high_risk_count}</div>
+                <div class="stat-label">High-risk cases</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{status_label}</div>
+                <div class="stat-label">API status</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">{REQUEST_TIMEOUT}s</div>
+                <div class="stat-label">Request timeout</div>
+            </div>
+        </div>
+    </div>
 </div>
 """,
     unsafe_allow_html=True,
@@ -419,16 +580,31 @@ if not active_patient:
     )
 
 else:
-    risk = active_patient.get("risk_level", "LOW")
+    risk = active_patient.get("risk_level") or "LOW"
+    risk_key = risk.lower()
+    risk_class = (
+        "risk-high"
+        if risk_key == "high"
+        else "risk-medium"
+        if risk_key == "medium"
+        else "risk-low"
+    )
+    safe_patient_name = html.escape(active_patient["name"])
 
-    col_a, col_b = st.columns([4, 1])
-
-    with col_a:
-        st.subheader(active_patient["name"])
-        st.caption(f"Patient ID: {active_patient['id']}")
-
-    with col_b:
-        st.metric("Risk", risk)
+    st.markdown(
+        f"""
+    <div class="patient-header">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+            <div>
+                <div class="patient-name">{safe_patient_name}</div>
+                <div class="patient-meta">Patient ID: {active_patient['id']}</div>
+            </div>
+            <div class="risk-pill {risk_class}">{html.escape(risk.upper())} RISK</div>
+        </div>
+    </div>
+    """,
+        unsafe_allow_html=True,
+    )
 
     left, right = st.columns([1.15, 1])
 
