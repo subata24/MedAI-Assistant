@@ -264,7 +264,7 @@ Answers a patient-specific question using the stored summary and recent chat mem
 
 ```bash
 git clone https://github.com/subata24/MedAI-Assistant.git
-cd patient-followup-assistant
+cd MedAI-Assistant
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
