@@ -46,7 +46,7 @@ The application allows healthcare professionals or students to upload patient di
 
 Rather than replacing healthcare professionals, MedAI Assistant focuses on improving patient understanding by transforming technical medical language into structured and easy-to-understand guidance.
 
-# Target Users
+ # Target Users
 
 - Patients after hospital discharge
 - Family caregivers
@@ -54,7 +54,7 @@ Rather than replacing healthcare professionals, MedAI Assistant focuses on impro
 - Healthcare professionals
 - AI developers exploring healthcare applications
 
-## Features
+ # Features
 
 - Multi-patient dashboard built with Streamlit
 - FastAPI REST backend deployed on Vercel
@@ -134,7 +134,7 @@ The conversational assistant is instructed to:
 
 7. The AI answers using both the discharge summary and recent conversation history.
 
-## Architecture
+# Architecture
 
 ```text
 Streamlit Cloud
@@ -153,7 +153,7 @@ Hosted PostgreSQL
   Neon, Supabase, Railway, or another provider
 ```
 
-## Project Structure
+ # Project Structure
 
 ```text
 .
@@ -176,7 +176,7 @@ Hosted PostgreSQL
 `-- requirements.txt
 ```
 
-## API Endpoints
+ # API Endpoints
 
 ### `GET /health`
 
@@ -260,7 +260,7 @@ Answers a patient-specific question using the stored summary and recent chat mem
 
 <img src="screenshots/chat.png" width="100%">
 
-## Local Setup
+# Local Setup
 
 ```bash
 git clone https://github.com/subata24/MedAI-Assistant.git
@@ -290,7 +290,7 @@ Run the frontend in another terminal:
 streamlit run app.py
 ```
 
-## Docker
+# Docker
 
 The repository includes a Dockerfile for running the Streamlit frontend in a container.
 
@@ -314,7 +314,7 @@ API_URL=http://host.docker.internal:8000
 
 For production, pass deployed service URLs through environment variables instead of copying secrets into the image.
 
-## Deployment
+# Deployment
 
 ### Vercel Backend
 
@@ -338,7 +338,7 @@ API_URL = "https://med-ai-assistant-pi.vercel.app"
 
 The value must be the API base URL only. Do not append `/health`, `/patients`, or `/docs`.
 
-## Production Notes
+# Production Notes
 
 - Keep `.env` out of GitHub.
 - Store secrets in Streamlit Cloud and Vercel environment variables.
