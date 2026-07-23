@@ -293,20 +293,56 @@ section[data-testid="stSidebar"] > div {
 /* Sidebar Inputs */
 .stTextInput input,
 .stNumberInput input,
-.stTextArea textarea {
-    background-color: #0F172A !important;
-    color: #FFFFFF !important;
-    -webkit-text-fill-color: #FFFFFF !important;
-    border: 1px solid #334155 !important;
+[data-testid="stTextInput"] input,
+[data-testid="stNumberInput"] input,
+.stTextArea textarea,
+[data-testid="stTextArea"] textarea {
+    background-color: #F8FAFC !important;
+    color: #0F172A !important;
+    -webkit-text-fill-color: #0F172A !important;
+    caret-color: #2563EB !important;
+    border: 1px solid #CBD5E1 !important;
     border-radius: 10px !important;
     font-size: 15px !important;
     opacity: 1 !important;
 }
 
-.stNumberInput button {
-    background: #111827 !important;
-    border-color: #334155 !important;
-    color: #E2E8F0 !important;
+.stTextInput input:-webkit-autofill,
+[data-testid="stTextInput"] input:-webkit-autofill,
+.stNumberInput input:-webkit-autofill,
+[data-testid="stNumberInput"] input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #F8FAFC inset !important;
+    -webkit-text-fill-color: #0F172A !important;
+}
+
+.stNumberInput button,
+[data-testid="stNumberInput"] button {
+    background: #E2E8F0 !important;
+    border-color: #CBD5E1 !important;
+    color: #0F172A !important;
+    -webkit-text-fill-color: #0F172A !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.stNumberInput button:hover,
+[data-testid="stNumberInput"] button:hover {
+    background: #2563EB !important;
+    border-color: #3B82F6 !important;
+}
+
+.stNumberInput button svg,
+[data-testid="stNumberInput"] button svg {
+    color: #0F172A !important;
+    fill: #0F172A !important;
+    stroke: #0F172A !important;
+}
+
+.stNumberInput button:hover svg,
+[data-testid="stNumberInput"] button:hover svg {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+    stroke: #FFFFFF !important;
 }
 
 /* BIGGER & CLEARER TEXTAREA */
@@ -328,16 +364,23 @@ section[data-testid="stSidebar"] > div {
 
 /* Placeholder */
 .stTextInput input::placeholder,
-.stTextArea textarea::placeholder {
-    color: #94A3B8 !important;
-    -webkit-text-fill-color: #94A3B8 !important;
+[data-testid="stTextInput"] input::placeholder,
+.stNumberInput input::placeholder,
+[data-testid="stNumberInput"] input::placeholder,
+.stTextArea textarea::placeholder,
+[data-testid="stTextArea"] textarea::placeholder {
+    color: #64748B !important;
+    -webkit-text-fill-color: #64748B !important;
     opacity: 1 !important;
 }
 
 /* Focus effect */
 .stTextInput input:focus,
 .stNumberInput input:focus,
-.stTextArea textarea:focus {
+[data-testid="stTextInput"] input:focus,
+[data-testid="stNumberInput"] input:focus,
+.stTextArea textarea:focus,
+[data-testid="stTextArea"] textarea:focus {
     border: 1px solid #3B82F6 !important;
     box-shadow: 0 0 0 1px #3B82F6 !important;
 }
@@ -422,6 +465,8 @@ with st.sidebar:
             min_value=0,
             max_value=120,
             value=None,
+            step=1,
+            format="%d",
             placeholder="Enter age",
         )
         patient_condition = st.text_input("Condition")
@@ -430,6 +475,7 @@ with st.sidebar:
 
     if submitted and patient_name:
         age_text = patient_age if patient_age is not None else "Not provided"
+
         report_text = f"""
 Age: {age_text}
 
