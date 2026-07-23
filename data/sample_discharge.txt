@@ -1,4 +1,21 @@
-Patient diagnosed with hypertension.
-Prescribed amlodipine 5mg daily.
-Advised low sodium diet.
-Monitor blood pressure regularly.
+Patient diagnosed with Type 2 Diabetes Mellitus and Hypertension.
+
+Discharge Medications:
+- Metformin 500 mg twice daily after meals.
+- Amlodipine 5 mg once daily.
+- Atorvastatin 20 mg at bedtime.
+
+Diet:
+Follow a diabetic-friendly, low-salt diet. Avoid sugary beverages, processed foods, and excessive carbohydrates.
+
+Activity:
+Resume light daily activities. Walk for at least 30 minutes daily as tolerated. Avoid strenuous exercise for one week.
+
+Monitoring:
+Check blood glucose twice daily and blood pressure once daily. Maintain a record of readings.
+
+Follow-up:
+Visit your primary care physician within 7 days with your blood glucose and blood pressure records.
+
+Warning Signs:
+Seek immediate medical attention if you experience chest pain, severe shortness of breath, confusion, persistent vomiting, loss of consciousness, or blood glucose below 70 mg/dL with symptoms.
